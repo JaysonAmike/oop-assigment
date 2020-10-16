@@ -1,0 +1,83 @@
+public class Main {
+     
+    public static boolean waterAdded;//is water added        
+    public static boolean isgrinded;//is coffebean added
+    public static int mLimit=10;// minum water in CoffeeMachine
+    public static int waterInputed=50;//water in macheine
+
+    public static void main(String[] args) {
+        int i= 0;
+        int j=0;
+
+        //refer to scanner
+          Scanner sc= new Scanner(System.in);
+
+        // Declare a reference to a CoffeeMachine.- don't understand
+          CoffeeMachine strength;
+        // Create a new CoffeeMachine and make the variable refer to it.
+          CoffeeMachine cM =new CoffeeMachine();
+
+        // see if water and beans are added in CoffeeMachine.
+            if(i==0){
+                cM.addWater();
+                waterAdded=true;
+                i++;
+            }
+            if (j==0){                
+                cM.addBeans();
+                isgrinded=true;
+                j++;
+            }
+
+     // sees if coffee can be brewed
+         if(isgrinded==true && waterAdded==true && waterInputed>mLimit){
+         //ask user for strech of coffee
+            System.out.println("how strong do you want your coffee "+"strong, "+"medium "+"weak");
+            String strengthOfCoffee=sc.nextLine();
+        
+        // Get ready to grind some strong coffee in the CoffeeMachine.
+          cM.setStrength(strengthOfCoffee);
+
+        // Grind the beans.
+         cM.grindBeans();
+        
+        // Declare a reference to a CoffeeCup.-don't understand
+          CoffeeCup =false;
+        // Create a new CoffeeCup and make the variable refer to it.
+          CoffeeCup cC =new CoffeeCup();
+          
+        //user ask user for name of coffe name to coffe cup
+          System.out.println("what is the name of your coffee cup");
+          String cCName=sc.nextLine();
+          cC.getName(cCName);
+          
+        
+        // Have your CoffeeMachine brew coffee into the coffee cup.
+          cM.brew(cC);
+
+        // Drink from the cup.
+          cC.drink();
+
+        // Try to drink again --the cup is now empty.
+          cC.drink();
+
+        // Declare ANOTHER coffee cup reference and initialize it.
+          CoffeeCup cC2 =new CoffeeCup();
+          
+        // Brew coffee into the new cup.
+          cM.brew(cC);
+          waterInputed-=10;
+
+        // Try to drink from the first cup --it's still empty!
+          cC.drink();
+
+        // Drink from the second cup.
+          cC2.drink();
+        
+        // Print a sigh of satisfaction.
+          System.out.println("sigh of satisfaction");
+         }
+         else
+             System.out.println("can't brew coffe");
+        
+    }
